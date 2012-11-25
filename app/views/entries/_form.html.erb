@@ -1,0 +1,11 @@
+<%= simple_form_for @entry, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :song %>
+  <%= f.association :picture %>
+  <%= f.association :movie %>
+  <%= f.input :unlock_date, :as => :string, :input_html => {:class => 'dt'} %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                entries_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<%= simple_form_for @calendar, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :pub_date, :as => :string, :input_html => {:class => 'dt'}%>
+	<%= f.input :background, :as => :file %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                calendars_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+<h3>Entries</h3>
+<table class="table table-condensed table-striped">
+	<tr><th>Picture</th><th>Song</th><th>Movie</th></tr>
+<% @calendar.entries.each do |e| %>
+	<tr>
+		<td><%= e.picture %></td>
+		<td><%= e.song %></td>
+		<td><%= e.movie %></td>
+	</tr>
+	
+<% end %>
+
+</table>
+<%= link_to "New entry", new_calendar_entry_path(@calendar), :class => 'btn' %>

@@ -1,0 +1,9 @@
+<%= simple_form_for @picture, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :picturefile, :as => :file %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pictures_path, :class => 'btn' %>
+  </div>
+<% end %>
