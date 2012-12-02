@@ -9122,3 +9122,26 @@ Processing by CalendarsController#new as HTML
   Rendered calendars/new.html.erb within layouts/application (11.2ms)
   [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
 Completed 200 OK in 36ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:04:16 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (10.8ms)
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (756.9ms)
+Completed 500 Internal Server Error in 762ms
+
+ActionView::Template::Error (undefined method `new_calendar_entry_path' for #<#<Class:0x007fc7745e83a8>:0x007fc77442ad68>):
+    17: <% end %>
+    18: 
+    19: </table>
+    20: <%= link_to "New entry", new_calendar_entry_path(@calendar), :class => 'btn' %>
+  app/views/calendars/edit.html.erb:20:in `_app_views_calendars_edit_html_erb__1128360001857868066_70247312949580'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
