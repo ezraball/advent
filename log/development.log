@@ -9145,3 +9145,204 @@ ActionView::Template::Error (undefined method `new_calendar_entry_path' for #<#<
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:09:43 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (10.0ms)
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (41.8ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 133ms (Views: 59.3ms | ActiveRecord: 12.3ms)
+
+
+Started PUT "/calendars/1" for 127.0.0.1 at 2012-12-01 22:10:09 -0500
+Processing by CalendarsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xCOkiHazU9hGxw5q2yjthTEqO+SILE5834JTs0kq+Po=", "calendar"=>{"name"=>"2012", "pub_date"=>"12/01/2012", "end_date"=>"2012-12-24", "days_to_count_down"=>"24"}, "commit"=>"Update Calendar", "id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mUPDATE `calendars` SET `pub_date` = '2012-01-12', `updated_at` = '2012-12-02 03:10:09' WHERE `calendars`.`id` = 1[0m
+[paperclip] Saving attachments.
+  [1m[35m (691.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/calendars/1
+Completed 302 Found in 779ms (ActiveRecord: 694.7ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 22:10:10 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.5ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (3.9ms)
+Completed 200 OK in 114ms (Views: 111.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:31:27 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (8.9ms)
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (12.2ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Compiled application.js  (104ms)  (pid 90928)
+Completed 200 OK in 984ms (Views: 979.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:31:38 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (9.3ms)
+  [1m[35mEntry Load (0.4ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  Rendered calendars/edit.html.erb within layouts/application (12.2ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:32:13 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (8.1ms)
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (10.9ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:33:46 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (11.9ms)
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  Rendered calendars/edit.html.erb within layouts/application (236.0ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 522ms (Views: 453.5ms | ActiveRecord: 24.0ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:44:26 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (10.0ms)
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (13.3ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Compiled application.js  (82ms)  (pid 91924)
+Completed 200 OK in 663ms (Views: 660.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:51:08 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (8.6ms)
+  [1m[35mEntry Load (0.4ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  Rendered calendars/edit.html.erb within layouts/application (11.6ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Compiled application.js  (14ms)  (pid 91924)
+Completed 200 OK in 3828ms (Views: 3826.3ms | ActiveRecord: 1.0ms)
+
+
+Started PUT "/calendars/1" for 127.0.0.1 at 2012-12-01 22:51:49 -0500
+Processing by CalendarsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xCOkiHazU9hGxw5q2yjthTEqO+SILE5834JTs0kq+Po=", "calendar"=>{"name"=>"2012", "pub_date"=>"20122012-12-13", "end_date"=>"20122012-12-20", "days_to_count_down"=>"24"}, "commit"=>"Update Calendar", "id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (66.7ms)[0m  UPDATE `calendars` SET `pub_date` = '20122012-12-13', `end_date` = '20122012-12-20', `updated_at` = '2012-12-02 03:51:49' WHERE `calendars`.`id` = 1
+[paperclip] Saving attachments.
+  [1m[36m (527.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/calendars/1
+Completed 302 Found in 724ms (ActiveRecord: 594.5ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 22:51:50 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (53.9ms)
+Completed 500 Internal Server Error in 94ms
+
+ActionView::Template::Error (undefined method `-' for nil:NilClass):
+    1: <% @calendar.entries.each do |entry| %>
+    2: 	<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
+    3: 		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#entry-#{entry.id}" %>
+    4: 	</div>
+    5: <% end %>
+  app/models/entry.rb:10:in `unlocked?'
+  app/views/calendars/show.html.erb:3:in `block in _app_views_calendars_show_html_erb___84306066994169797_70218654346460'
+  app/views/calendars/show.html.erb:1:in `_app_views_calendars_show_html_erb___84306066994169797_70218654346460'
+  app/controllers/calendars_controller.rb:18:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.5ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 22:52:10 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (3.2ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `-' for nil:NilClass):
+    1: <% @calendar.entries.each do |entry| %>
+    2: 	<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
+    3: 		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#entry-#{entry.id}" %>
+    4: 	</div>
+    5: <% end %>
+  app/models/entry.rb:10:in `unlocked?'
+  app/views/calendars/show.html.erb:3:in `block in _app_views_calendars_show_html_erb___84306066994169797_70218654346460'
+  app/views/calendars/show.html.erb:1:in `_app_views_calendars_show_html_erb___84306066994169797_70218654346460'
+  app/controllers/calendars_controller.rb:18:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-01 22:52:22 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (8.8ms)
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (11.8ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Compiled application.js  (12ms)  (pid 91924)
+Completed 200 OK in 648ms (Views: 645.9ms | ActiveRecord: 1.0ms)
+
+
+Started PUT "/calendars/1" for 127.0.0.1 at 2012-12-01 22:52:30 -0500
+Processing by CalendarsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xCOkiHazU9hGxw5q2yjthTEqO+SILE5834JTs0kq+Po=", "calendar"=>{"name"=>"2012", "pub_date"=>"2012-12-01", "end_date"=>"2012-12-24", "days_to_count_down"=>"24"}, "commit"=>"Update Calendar", "id"=>"1"}
+  [1m[36mCalendar Load (0.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.8ms)[0m  [1mUPDATE `calendars` SET `pub_date` = '2012-12-01', `end_date` = '2012-12-24', `updated_at` = '2012-12-02 03:52:30' WHERE `calendars`.`id` = 1[0m
+[paperclip] Saving attachments.
+  [1m[35m (2278.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/calendars/1
+Completed 302 Found in 2287ms (ActiveRecord: 2281.2ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 22:52:32 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.5ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (3.1ms)
+Completed 200 OK in 50ms (Views: 47.5ms | ActiveRecord: 0.8ms)

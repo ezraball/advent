@@ -19,7 +19,10 @@
 
 
 $(document).ready(function() {
-	$('.dt').datepicker();
+	$('.dt').datepicker({
+		autoclose:true,
+		dateFormat: "yy-mm-dd"		
+	}).formatDate();
 	$('.numlink').draggable({
 		cursor: 'move',
 		stop: function() {
