@@ -24,7 +24,7 @@ module EntriesHelper
   
   def display_picture(entry)
     if entry.picture
-      if entry.picture.width > 600
+      if (entry.picture.width || 0) > 600
     		image_tag(entry.picture.picturefile.url(:full))
     	else
     		image_tag(entry.picture.picturefile.url(:original))

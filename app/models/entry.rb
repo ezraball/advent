@@ -7,7 +7,7 @@ class Entry < ActiveRecord::Base
   belongs_to :movie
   
   def unlocked?(debug = false)
-    debug || ((self.calendar.end_date - Date.today).to_i < self.calendar.days_to_count_down)
+    debug || (self.day < (self.calendar.days_to_count_down - (self.calendar.end_date - Date.today).to_i))
   end
   
 end

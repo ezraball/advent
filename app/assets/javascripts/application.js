@@ -44,6 +44,8 @@ $(document).ready(function() {
 			keyboard: true,
 			remote: '/calendars/' + $(this).attr('calendar_id') + '/entries/' + $(this).attr('entry_id') + '?channel=' + $(this).attr('channel_id')
 		}).modal('show');
+		$('#modalday').html($(this).attr('entry_day'));
+		$('#modalchannel').html($(this).attr('channel_id'));
 	});
 	
 	$('#myModal').on('shown', function(e) {

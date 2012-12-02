@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
   # GET /entries/1.json
   def show
     @calendar = Calendar.find_by_id(params[:calendar_id])
-    @entry = Entry.where(" day = ? and calendar_id = ?", params[:id], @calendar.id).first
+    @entry = Entry.find(params[:id])
     @moviechannel = (params[:channel] == '2')
 
     respond_to do |format|
@@ -30,6 +30,7 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
     @entry.calendar = Calendar.find_by_id(params[:calendar_id])
+    @calendar = @entry.calendar
 
     respond_to do |format|
       format.html # new.html.erb
