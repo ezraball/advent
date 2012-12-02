@@ -2,7 +2,6 @@
   <p>Calendar: <%= @calendar.name %></p>
   <%= f.input :calendar_id, :as => :hidden %>
   <%= f.input :day %>
-  <%= f.input :unlock_date, :as => :string, :input_html => {:class => 'dt'} %>
   <%= f.association :song %>
   <%= f.association :picture %>
   <%= f.association :movie %>
