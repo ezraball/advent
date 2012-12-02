@@ -10,7 +10,7 @@
       <th><%= model_class.human_attribute_name(:song_id) %></th>
       <th><%= model_class.human_attribute_name(:picture_id) %></th>
       <th><%= model_class.human_attribute_name(:movie_id) %></th>
-      <th><%= model_class.human_attribute_name(:unlock_date) %></th>
+      <th><%= model_class.human_attribute_name(:day) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -23,7 +23,7 @@
         <td><%= entry.song_id %></td>
         <td><%= entry.picture_id %></td>
         <td><%= entry.movie_id %></td>
-        <td><%= entry.unlock_date %></td>
+        <td><%= entry.day %></td>
         <td><%=l entry.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

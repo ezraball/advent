@@ -1,0 +1,18 @@
+
+<%= simple_form_for @entry, :remote => true, :html => { :id => 'posform' } do |f| %>
+	<%= f.input :x, :input_html => {:id => 'xid'} %>
+	<%= f.input :y, :input_html => {:id => 'yid'} %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                entries_path, :class => 'btn' %>
+  </div>
+<% end %>
+<div id="savednotice" class="alert alert-info"></div>
+<script>
+$('#posform').bind('ajax:success',function() {
+	$('#savednotice').removeClass("alert-info alert-success").addClass("alert-success").html('saved');
+}).bind('ajax:beforeSend',function() {
+	$('#savednotice').removeClass("alert-info alert-success").html('saving...');
+});
+</script>

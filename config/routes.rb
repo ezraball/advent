@@ -1,5 +1,9 @@
 Advent::Application.routes.draw do
-  resources :entries
+  resources :entries do
+    member do
+      get 'form'
+    end
+  end
 
   resources :pictures
 

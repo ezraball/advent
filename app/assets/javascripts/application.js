@@ -15,8 +15,26 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require bootstrap-datepicker
+//= require jquery-ui
 
 
 $(document).ready(function() {
 	$('.dt').datepicker();
+	$('.numlink').draggable({
+		cursor: 'move',
+		stop: function() {
+			entry_id = $(this).attr('data-eid');
+			var x = $(this).position().left;
+			var y = $(this).position().top;
+			$.ajax({
+				url: "/entries/" + entry_id + "/form",
+				success: function(data) {
+					$('#entryformarea').html(data);
+					$('#xid').val(x);
+					$('#yid').val(y);
+				}
+			});				
+//			alert("left:" + $(this).position().left);
+		}
+	});
 });

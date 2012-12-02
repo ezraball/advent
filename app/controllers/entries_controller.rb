@@ -25,10 +25,20 @@ class EntriesController < ApplicationController
   # GET /entries/new.json
   def new
     @entry = Entry.new
+    @entry.calendar = Calendar.find_by_id(params[:calendar_id])
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @entry }
+    end
+  end
+  
+  def form
+    @entry = Entry.find(params[:id])
+    respond_to do |format|
+      format.html {
+        render :partial => 'positionform'
+      }
     end
   end
 

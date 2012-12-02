@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125170039) do
+ActiveRecord::Schema.define(:version => 20121201011718) do
 
   create_table "calendars", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20121125170039) do
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
+    t.date     "end_date"
+    t.integer  "days_to_count_down"
   end
 
   create_table "entries", :force => true do |t|
@@ -29,9 +31,11 @@ ActiveRecord::Schema.define(:version => 20121125170039) do
     t.integer  "song_id"
     t.integer  "picture_id"
     t.integer  "movie_id"
-    t.date     "unlock_date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "day"
+    t.integer  "x"
+    t.integer  "y"
   end
 
   add_index "entries", ["calendar_id"], :name => "index_entries_on_calendar_id"
@@ -44,21 +48,6 @@ ActiveRecord::Schema.define(:version => 20121125170039) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
-
-  create_table "pairings", :force => true do |t|
-    t.integer  "calendar_id"
-    t.integer  "song_id"
-    t.integer  "picture_id"
-    t.integer  "movie_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "pairings", ["calendar_id", "song_id", "movie_id", "picture_id"], :name => "pairings_everything_idx"
-  add_index "pairings", ["calendar_id"], :name => "index_pairings_on_calendar_id"
-  add_index "pairings", ["movie_id"], :name => "index_pairings_on_movie_id"
-  add_index "pairings", ["picture_id"], :name => "index_pairings_on_picture_id"
-  add_index "pairings", ["song_id"], :name => "index_pairings_on_song_id"
 
   create_table "pictures", :force => true do |t|
     t.datetime "created_at",               :null => false
@@ -76,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20121125170039) do
     t.string   "songfile_content_type"
     t.integer  "songfile_file_size"
     t.datetime "songfile_updated_at"
+    t.string   "artist"
+    t.string   "title"
   end
 
 end

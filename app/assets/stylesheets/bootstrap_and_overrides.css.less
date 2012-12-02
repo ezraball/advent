@@ -29,6 +29,7 @@
 //
 // Example:
 // @linkColor: #ff0000;
+@lightGreen: #a4a98c;
 
 #calnav {
 	margin-bottom:0px;
@@ -36,4 +37,75 @@
 #cal {
 	height:635px;
 	
+}
+body {
+	font-family: 'Oranienbaum', serif;
+}
+
+#instructions {
+	margin-top:200px;
+	line-height:auto;
+	padding:15px;
+	border: 1px solid #666;
+}
+h1, h2, h3, .num {
+	font-family: Spinnaker;
+	text-transform: uppercase;
+}
+#logo, #logo h3, #logo h2 {
+	text-align:center;
+	line-height:none;
+	text-transform: none;
+}
+#logo, #logo h3 {
+	font-family: 'Clicker Script', cursive;
+	color:#FFF;
+}
+#logo h2 {
+	font-family: 'Oranienbaum';
+	font-size:5em;
+	color:@lightGreen;
+//	font-weight: normal;
+}
+
+#instructions h3 {
+//	font-size:0.8em;
+	font-size:1.1em;
+	line-height:1.2em;
+	margin-bottom:10px;
+	color:@lightGreen;	
+}
+#instructions h2 {
+	font-family: 'Clicker Script',cursive;
+	color:@lightGreen;	
+	font-size:1.1em;
+	font-weight:normal;
+	line-height:1em;
+	margin-bottom:5px;
+}
+.alpha60 {
+/* Fallback for web browsers that don't support RGBa */
+background-color: rgb(255,255,255);
+/* RGBa with 0.6 opacity */
+background-color: rgba(255,255,255, 0.2);
+/* For IE 5.5 - 7*/
+/* For IE 8*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.numlink {
+	position:absolute; 
+	height:18px;
+	width:18px;
+	text-align:center;
+	background: url(/images/number_background.png);
+	font-weight:bold;
+	font-family: 'Spinnaker','Helvetica','Arial',sans-serif;
+	font-size:.9em;
+}
+.numlink > a {
+	color:red;
+	font-weight:bold;
+	font-family: 'Spinnaker','Helvetica','Arial',sans-serif;
+	font-size:.9em;
 }

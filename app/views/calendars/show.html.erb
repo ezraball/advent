@@ -1,0 +1,5 @@
+<% @calendar.entries.each do |entry| %>
+	<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
+		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#entry-#{entry.id}" %>
+	</div>
+<% end %>
