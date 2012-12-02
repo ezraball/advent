@@ -9346,3 +9346,150 @@ Processing by CalendarsController#show as HTML
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
   Rendered calendars/show.html.erb within layouts/showcalendar (3.1ms)
 Completed 200 OK in 50ms (Views: 47.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 23:10:56 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (500.2ms)
+Completed 200 OK in 1274ms (Views: 1122.6ms | ActiveRecord: 73.1ms)
+
+
+Started GET "/calendars/1?position=1" for 127.0.0.1 at 2012-12-01 23:11:09 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"position"=>"1", "id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (3.3ms)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/calendars/1?position=1" for 127.0.0.1 at 2012-12-01 23:12:52 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"position"=>"1", "id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.5ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (2.6ms)
+Compiled application.js  (15ms)  (pid 92601)
+Completed 200 OK in 367ms (Views: 364.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/entries/1/form" for 127.0.0.1 at 2012-12-01 23:12:56 -0500
+Processing by EntriesController#form as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mEntry Load (4.2ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1
+  Rendered entries/_positionform.erb (111.9ms)
+Completed 200 OK in 218ms (Views: 210.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/calendars/1?debug=1" for 127.0.0.1 at 2012-12-01 23:13:07 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"debug"=>"1", "id"=>"1"}
+  [1m[36mCalendar Load (0.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.4ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (2.6ms)
+Completed 200 OK in 38ms (Views: 35.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/entries/1/form" for 127.0.0.1 at 2012-12-01 23:13:16 -0500
+Processing by EntriesController#form as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1[0m
+  Rendered entries/_positionform.erb (4.7ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/entries/1/form" for 127.0.0.1 at 2012-12-01 23:13:21 -0500
+Processing by EntriesController#form as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mEntry Load (2.0ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1
+  Rendered entries/_positionform.erb (4.6ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/calendars/1?debug=1" for 127.0.0.1 at 2012-12-01 23:15:37 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"debug"=>"1", "id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.4ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (2.4ms)
+Compiled application.js  (59ms)  (pid 92601)
+Completed 200 OK in 3821ms (Views: 3818.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/entries/1/form" for 127.0.0.1 at 2012-12-01 23:15:49 -0500
+Processing by EntriesController#form as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1[0m
+  Rendered entries/_positionform.erb (4.9ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/entries" for 127.0.0.1 at 2012-12-01 23:15:53 -0500
+Processing by EntriesController#index as HTML
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` 
+  Rendered entries/index.html.erb within layouts/application (31.8ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 1478ms (Views: 1475.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/entries/1/form" for 127.0.0.1 at 2012-12-01 23:16:08 -0500
+Processing by EntriesController#form as */*
+  Parameters: {"id"=>"1"}
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1
+  Rendered entries/_positionform.erb (4.7ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/entries/1" for 127.0.0.1 at 2012-12-01 23:16:10 -0500
+Processing by EntriesController#update as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xCOkiHazU9hGxw5q2yjthTEqO+SILE5834JTs0kq+Po=", "entry"=>{"x"=>"93", "y"=>"85"}, "commit"=>"Update Entry", "id"=>"1"}
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (18.8ms)[0m  [1mUPDATE `entries` SET `x` = 93, `y` = 85, `updated_at` = '2012-12-02 04:16:10' WHERE `entries`.`id` = 1[0m
+  [1m[35m (626.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/entries/1
+Completed 302 Found in 674ms (ActiveRecord: 646.1ms)
+
+
+Started GET "/entries/1" for 127.0.0.1 at 2012-12-01 23:16:11 -0500
+Processing by EntriesController#show as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 LIMIT 1[0m
+  Rendered entries/show.html.erb within layouts/application (4.3ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 60ms (Views: 57.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2012-12-01 23:16:18 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.6ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (2.2ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/calendars/1?debug=1" for 127.0.0.1 at 2012-12-01 23:23:48 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"debug"=>"1", "id"=>"1"}
+  [1m[35mCalendar Load (0.8ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (7.6ms)
+Completed 200 OK in 311ms (Views: 299.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/calendars/1?debug=1" for 127.0.0.1 at 2012-12-01 23:24:15 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"debug"=>"1", "id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (1.6ms)
+Completed 200 OK in 82ms (Views: 80.1ms | ActiveRecord: 0.7ms)
