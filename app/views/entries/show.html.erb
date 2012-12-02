@@ -1,33 +1,23 @@
-<%- model_class = Entry -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:calendar_id) %>:</strong></dt>
-  <dd><%= @entry.calendar_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:song_id) %>:</strong></dt>
-  <dd><%= @entry.song_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:picture_id) %>:</strong></dt>
-  <dd><%= @entry.picture_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:movie_id) %>:</strong></dt>
-  <dd><%= @entry.movie_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:day) %>:</strong></dt>
-  <dd><%= @entry.day %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:x) %>:</strong></dt>
-  <dd><%= @entry.x %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:y) %>:</strong></dt>
-  <dd><%= @entry.y %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              entries_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_entry_path(@entry), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              entry_path(@entry),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<center>
+	<div id="entrymedia">
+	<% if @entry.movie && @moviechannel %>
+		<%= @entry.movie.embed_code.html_safe %>
+	<% else %>
+		<%= display_picture(@entry) %>
+		<% if @entry.song %>
+			<center><p id="audioinfo"><embed  autostart=true src="<%= @entry.song.songfile.url %>" controls=console width=300 height=18><BR><span class='audiolink'>Press play button to start audio, or <%= link_to "right-click here to download", @entry.song.songfile.url %> </span></p></center>
+		<% end %>
+	<% end %>
+	</div>
+</center>
+<script>
+	$('#entrymedia').width(<%= media_width(@entry) %>);
+	$('#myModal').width(<%= media_width(@entry) + 50 %>);
+	$('#entrymedia').height(<%= media_height(@entry) %>);
+	$('#modal-body').height(<%= media_height(@entry) + 95 %>);
+	$('#myModal').height(<%= media_height(@entry) + 95 %>)
+		 .css('margin-top', ($('#myModal').outerHeight() / 2) * -1)
+         .css('margin-left', ($('#myModal').outerWidth() / 2) * -1)
+		 .draggable({ handle: "p.movebutton" });
+    
+</script>

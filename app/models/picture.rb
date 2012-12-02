@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :picturefile
+  before_save :set_dimensions
 
   has_many :entries
   has_many :songs, :through => :entries
@@ -11,5 +12,13 @@ class Picture < ActiveRecord::Base
     :bucket => 'advent-dev'
     
     
+  def set_dimensions
+    tempfile = self.picturefile.queued_for_write[:original]
+    unless tempfile.nil?
+      dimensions = Paperclip::Geometry.from_file(tempfile)
+      self.width = dimensions.width
+      self.height = dimensions.height
+    end
+  end
 
 end

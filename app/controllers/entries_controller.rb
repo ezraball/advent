@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  layout :set_layout
+  
   # GET /entries
   # GET /entries.json
   def index
@@ -13,14 +15,16 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
-    @entry = Entry.find(params[:id])
+    @calendar = Calendar.find_by_id(params[:calendar_id])
+    @entry = Entry.where(" day = ? and calendar_id = ?", params[:id], @calendar.id).first
+    @moviechannel = (params[:channel] == '2')
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @entry }
     end
   end
-
+  
   # GET /entries/new
   # GET /entries/new.json
   def new
@@ -44,17 +48,19 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    @calendar = Calendar.find_by_id(params[:calendar_id])
     @entry = Entry.find(params[:id])
   end
 
   # POST /entries
   # POST /entries.json
   def create
+    @calendar = Calendar.find_by_id(params[:calendar_id])
     @entry = Entry.new(params[:entry])
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to edit_calendar_path(@calendar), notice: 'Entry was successfully created.' }
         format.json { render json: @entry, status: :created, location: @entry }
       else
         format.html { render action: "new" }
@@ -66,11 +72,12 @@ class EntriesController < ApplicationController
   # PUT /entries/1
   # PUT /entries/1.json
   def update
+    @calendar = Calendar.find_by_id(params[:calendar_id])
     @entry = Entry.find(params[:id])
 
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to edit_calendar_path(@calendar), notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,6 +95,16 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to entries_url }
       format.json { head :no_content }
+    end
+  end
+  
+  private
+  def set_layout
+    case action_name
+    when "show"
+      false
+    else
+      "application"
     end
   end
 end

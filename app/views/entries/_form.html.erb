@@ -1,5 +1,5 @@
-<%= simple_form_for @entry, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :calendar %>
+<%= simple_form_for [@calendar, @entry], :html => { :class => 'form-horizontal' } do |f| %>
+  <p>Calendar: <%= @calendar.name %></p>
   <%= f.input :day %>
   <%= f.association :song %>
   <%= f.association :picture %>

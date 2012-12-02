@@ -1,5 +1,22 @@
 <% @calendar.entries.each do |entry| %>
 	<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
-		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#entry-#{entry.id}" %>
+		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#myModal", {:class => 'etrig', :calendar_id => @calendar.id, :entry_id => entry.id} %>
 	</div>
 <% end %>
+
+<div class="channelchange">
+	&nbsp;
+</div>
+
+<div id="myModal" class="modal hide fade">
+    <button type="button" class="close closebutton" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+    <p class="movebutton"><i class="icon-move"></i></p>
+  <div class="modal-body" style="overflow-y:visible;">
+  </div>
+<%#
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+ %>
+</div>

@@ -7,4 +7,8 @@ class Song < ActiveRecord::Base
     :bucket => 'advent-dev'
   
   has_many :entries
+  
+  def label
+    [artist,title].join('|')
+  end
 end

@@ -1,21 +1,10 @@
-<%= form_for(@movie) do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
-
-      <ul>
-      <% @movie.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :youtube_url %><br />
-    <%= f.text_field :youtube_url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<%= simple_form_for @movie, :html => { :class => 'form-horizontal' } do |f| %>
+	<%= f.input :name %>
+	<%= f.input :width %>
+  	<%= f.input :embed_code, :input_html => {:rows => 5, :width => '100%'} %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                movies_path, :class => 'btn' %>
   </div>
 <% end %>

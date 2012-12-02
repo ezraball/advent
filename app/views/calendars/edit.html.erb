@@ -6,12 +6,22 @@
 <%= render :partial => 'form' %>
 <h3>Entries</h3>
 <table class="table table-condensed table-striped">
-	<tr><th>Picture</th><th>Song</th><th>Movie</th></tr>
+	<tr><th>&nbsp;</th><th>Day</th><th>Picture</th><th>Song</th><th>Movie</th></tr>
 <% @calendar.entries.each do |e| %>
 	<tr>
-		<td><%= e.picture %></td>
-		<td><%= e.song %></td>
-		<td><%= e.movie %></td>
+		<td>
+			<%= link_to 'edit', edit_calendar_entry_path([@calendar,@entry]), {:class => 'btn btn-small btn-info'} %>
+			<%= link_to 'preview', calendar_entry_path([@calendar,@entry]), {:class => 'btn btn-small'} %>
+		</td>
+		<td><%= e.day %></td>
+		<td>
+			<% if e.picture %>
+				<%= image_tag(e.picture.picturefile(:thumb))  %><br>
+				<%= e.picture.height %> x <%= e.picture.width %>
+			<% end %>
+		</td>
+		<td><%= e.song.label if e.song %></td>
+		<td><%= e.movie.name if e.movie %></td>
 	</tr>
 	
 <% end %>

@@ -41,14 +41,15 @@
 body {
 	font-family: 'Oranienbaum', serif;
 }
-
+#audioinfo, #instructions {
+	border: 1px solid #666;
+}
 #instructions {
 	margin-top:200px;
 	line-height:auto;
 	padding:15px;
-	border: 1px solid #666;
 }
-h1, h2, h3, .num {
+h1, h2, h3, .num, #channelinfo {
 	font-family: Spinnaker;
 	text-transform: uppercase;
 }
@@ -83,7 +84,7 @@ h1, h2, h3, .num {
 	line-height:1em;
 	margin-bottom:5px;
 }
-.alpha60 {
+.alpha60, #audioinfo {
 /* Fallback for web browsers that don't support RGBa */
 background-color: rgb(255,255,255);
 /* RGBa with 0.6 opacity */
@@ -108,4 +109,45 @@ background-color: rgba(255,255,255, 0.2);
 	font-weight:bold;
 	font-family: 'Spinnaker','Helvetica','Arial',sans-serif;
 	font-size:.9em;
+}
+#channelinfo {
+	border-top: 1px solid #666;
+	padding:20px;
+	text-align:center;
+	color: @lightGreen;
+}
+#currchan {
+	font-family: 'Oranienbaum',serif;
+	font-weight: bold;
+	color: #fff;
+}
+.channelchange {
+	position:absolute;
+	left: 470px;
+	top: 335px;
+	width:170px;
+	height:2em;
+}
+div:hover.channelchange {
+	cursor:pointer;
+}
+.modal {
+  &.fade {
+    .transition(e('opacity .3s linear'));
+    top: 50%;
+  }
+  &.fade.in { top: 50%; }
+}
+.modal-body {
+	overflow-y:0;
+	max-height:none;
+}
+#myModal a {
+	color: @lightGreen;
+}
+#myModal {
+	background-color: #c92221;
+}
+.movebutton, .closebutton {
+	margin:5px 15px;
 }
