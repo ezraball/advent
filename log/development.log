@@ -9055,3 +9055,11 @@ Processing by CalendarsController#new as HTML
   Rendered calendars/new.html.erb within layouts/application (183.5ms)
   [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
 Completed 200 OK in 4194ms (Views: 4175.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/calendars/new" for 127.0.0.1 at 2012-12-01 21:39:45 -0500
+Processing by CalendarsController#new as HTML
+  Rendered calendars/_form.html.erb (6.1ms)
+  Rendered calendars/new.html.erb within layouts/application (7.4ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.3ms)
