@@ -14134,3 +14134,4 @@ Processing by EntriesController#show as HTML
 Completed 200 OK in 103ms (Views: 76.7ms | ActiveRecord: 15.0ms)
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
