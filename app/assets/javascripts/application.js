@@ -55,6 +55,8 @@ $(document).ready(function() {
 	         .css('margin-left', (modal.outerWidth() / 2) * -1);
 
 	    return this;
+	}).on('hide', function() {
+		$('.modal-body').html('&nbsp;');		
 	}).on('hidden', function() {
 	    $(this).removeData('modal');
 	});	
