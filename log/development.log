@@ -14816,3 +14816,18 @@ Processing by CalendarsController#edit as HTML
   Rendered calendars/edit.html.erb within layouts/application (22.9ms)
   [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
 Completed 200 OK in 144ms (Views: 140.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-05 01:42:57 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.9ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (12.4ms)
+  [1m[35mEntry Load (35.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mPicture Load (2.2ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 3 LIMIT 1[0m
+  [1m[35mSong Load (2.7ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (458.8ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 2383ms (Views: 600.3ms | ActiveRecord: 1756.6ms)
