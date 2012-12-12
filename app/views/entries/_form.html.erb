@@ -2,9 +2,9 @@
   <p>Calendar: <%= @calendar.name %></p>
   <%= f.input :calendar_id, :as => :hidden %>
   <%= f.input :day %>
-  <%= f.association :song %>
-  <%= f.association :picture %>
-  <%= f.association :movie %>
+  <%= f.association :song, :label_method => :label, :collection => Song.unassigned %>
+  <%= f.association :picture, :collection => Picture.unassigned, :label_method => :picturefile_file_name %>
+  <%= f.association :movie, :collection => Movie.unassigned %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

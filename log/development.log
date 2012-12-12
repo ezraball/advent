@@ -14831,3 +14831,624 @@ Processing by CalendarsController#edit as HTML
   Rendered calendars/edit.html.erb within layouts/application (458.8ms)
   [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
 Completed 200 OK in 2383ms (Views: 600.3ms | ActiveRecord: 1756.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-09 12:59:56 -0500
+Connecting to database specified by database.yml
+
+Mysql2::Error (Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)):
+  mysql2 (0.3.11) lib/mysql2/client.rb:44:in `connect'
+  mysql2 (0.3.11) lib/mysql2/client.rb:44:in `initialize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `new'
+  activerecord (3.2.8) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `mysql2_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:309:in `new_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:319:in `checkout_new_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:241:in `block (2 levels) in checkout'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:236:in `loop'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:236:in `block in checkout'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:233:in `checkout'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:96:in `block in connection'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:95:in `connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:404:in `retrieve_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_specification.rb:170:in `retrieve_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_specification.rb:144:in `connection'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:67:in `rescue in call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:61:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__3165702620532576414__call__3486124137287528271__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (17.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCalendars (20121121014254)
+Migrating to CreateSongs (20121124140106)
+Migrating to AddAttachmentSongfileToSongs (20121124140149)
+Migrating to CreateMovies (20121124140243)
+Migrating to CreatePictures (20121124140253)
+Migrating to AddAttachmentPicturefileToPictures (20121124140315)
+Migrating to CreateEntries (20121125020653)
+Migrating to AddAttachmentBackgroundToCalendars (20121125170039)
+Migrating to AddxyToEntry (20121129020629)
+Migrating to RemoveUnlockDateFromEntry (20121129020821)
+Migrating to AddxyToEntries (20121129023856)
+Migrating to AddStuffToCalendar (20121130220641)
+Migrating to AddInfoToSong (20121201011718)
+  [1m[35m (103.1ms)[0m  ALTER TABLE `songs` ADD `artist` varchar(255)
+  [1m[36m (29.1ms)[0m  [1mALTER TABLE `songs` ADD `title` varchar(255)[0m
+  [1m[35m (1.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121201011718')
+Migrating to AddWidthHeightToPicture (20121202151830)
+  [1m[36m (18.2ms)[0m  [1mALTER TABLE `pictures` ADD `width` int(11)[0m
+  [1m[35m (16.8ms)[0m  ALTER TABLE `pictures` ADD `height` int(11)
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121202151830')[0m
+Migrating to AddEmbedCodeToMovies (20121202185751)
+  [1m[35m (20.3ms)[0m  ALTER TABLE `movies` DROP `youtube_url`
+  [1m[36m (16.0ms)[0m  [1mALTER TABLE `movies` ADD `embed_code` text[0m
+  [1m[35m (16.0ms)[0m  ALTER TABLE `movies` ADD `name` varchar(255)
+  [1m[36m (14.0ms)[0m  [1mALTER TABLE `movies` ADD `width` int(11)[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121202185751')
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-11 20:59:09 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (2.5ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (1.2ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.1ms)
+Compiled bootstrap-datepicker.css  (0ms)  (pid 29869)
+Compiled application.css  (34ms)  (pid 29869)
+Compiled jquery.js  (5ms)  (pid 29869)
+Compiled jquery_ujs.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-alert.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-tab.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap/bootstrap-affix.js  (0ms)  (pid 29869)
+Compiled twitter/bootstrap.js  (187ms)  (pid 29869)
+Compiled bootstrap-datepicker/core.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.bg.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.br.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.cs.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.da.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.de.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.es.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.fi.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.fr.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.id.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.is.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.it.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ja.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.kr.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.lt.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.lv.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ms.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.nb.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.nl.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pl.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pt.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ru.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.sl.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.sv.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.th.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.tr.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.js  (0ms)  (pid 29869)
+Compiled bootstrap-datepicker/index.js  (389ms)  (pid 29869)
+Compiled jquery-ui.js  (5ms)  (pid 29869)
+Compiled application.js  (744ms)  (pid 29869)
+Completed 200 OK in 1174ms (Views: 1144.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-11 20:59:18 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (5.1ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (9.7ms)
+  [1m[35mEntry Load (0.8ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  Rendered calendars/edit.html.erb within layouts/application (64.4ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 99ms (Views: 90.0ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-11 21:00:18 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.9ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (6.7ms)
+  [1m[36mEntry Load (0.8ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  Rendered calendars/edit.html.erb within layouts/application (9.7ms)
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 34ms (Views: 31.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2012-12-11 21:00:29 -0500
+
+SyntaxError (/Users/ezraball/Dropbox/advent/app/models/song.rb:10: syntax error, unexpected tLAMBDA, expecting keyword_end
+  scope :unassigned -> {where( ' id not in (select ...
+                      ^):
+  app/controllers/songs_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.2ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2012-12-11 21:01:16 -0500
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (0.7ms)[0m  [1mSELECT `songs`.* FROM `songs` [0m
+  Rendered songs/index.html.erb within layouts/application (103.1ms)
+  [1m[35mCalendar Load (0.1ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 159ms (Views: 147.3ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2012-12-11 21:01:22 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (5.0ms)
+  Rendered songs/new.html.erb within layouts/application (6.6ms)
+  [1m[36mCalendar Load (0.8ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 33ms (Views: 24.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/songs" for 127.0.0.1 at 2012-12-11 21:01:32 -0500
+Processing by SongsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5M+H7HD7gyGMK+9eKOG4azj4vx12spEvBM8qNC0Lpmg=", "song"=>{"artist"=>"Bob", "title"=>"Rock", "songfile"=>#<ActionDispatch::Http::UploadedFile:0x007fd5be760d18 @original_filename="4.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"song[songfile]\"; filename=\"4.mp3\"\r\nContent-Type: audio/mp3\r\n", @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/RackMultipart20121211-29869-114vgqj>>}, "commit"=>"Create Song"}
+  [1m[35m (1.2ms)[0m  BEGIN
+  [1m[36mSQL (5.9ms)[0m  [1mINSERT INTO `songs` (`artist`, `created_at`, `songfile_content_type`, `songfile_file_name`, `songfile_file_size`, `songfile_updated_at`, `title`, `updated_at`) VALUES ('Bob', '2012-12-12 02:01:32', 'audio/mp3', '4.mp3', 4124912, '2012-12-12 02:01:32', 'Rock', '2012-12-12 02:01:32')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /songs/songfiles/000/000/001/original/4.mp3
+[AWS S3 200 7.339561 0 retries] put_object(:acl=>:public_read,:bucket_name=>"advent-dev",:content_type=>"audio/mp3",:data=>#<Paperclip::UploadedFileAdapter:0x007fd5be7b07c8 @target=#<ActionDispatch::Http::UploadedFile:0x007fd5be760d18 @original_filename="4.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"song[songfile]\"; filename=\"4.mp3\"\r\nContent-Type: audio/mp3\r\n", @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/RackMultipart20121211-29869-114vgqj>>, @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/420121211-29869-1kcw9t2.mp3>>,:key=>"songs/songfiles/000/000/001/original/4.mp3")  
+
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:5000/songs/1
+Completed 302 Found in 7742ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:01:39 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSong Load (0.8ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1[0m
+  Rendered songs/show.html.erb within layouts/application (2.4ms)
+  [1m[35mCalendar Load (0.8ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:02:36 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1[0m
+  Rendered songs/show.html.erb within layouts/application (7.1ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `songfile_url' for #<Song:0x007fd5be4c8128>):
+    7:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_name) %>:</strong></dt>
+    8:   <dd><%= @song.songfile_file_name %></dd>
+    9:   <dt><strong><%= model_class.human_attribute_name(:songfile_url) %>:</strong></dt>
+    10:   <dd><%= @song.songfile_url %></dd>
+    11:   <dt><strong><%= model_class.human_attribute_name(:songfile_content_type) %>:</strong></dt>
+    12:   <dd><%= @song.songfile_content_type %></dd>
+    13:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_size) %>:</strong></dt>
+  app/views/songs/show.html.erb:10:in `_app_views_songs_show_html_erb___2370765269131739608_70277998716540'
+  app/controllers/songs_controller.rb:18:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.4ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:02:49 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  Rendered songs/show.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 3ms
+
+ActionView::Template::Error (undefined method `url' for :songfile:Symbol):
+    6: <dl class="dl-horizontal">
+    7:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_name) %>:</strong></dt>
+    8:   <dd><%= @song.songfile_file_name %></dd>
+    9:   <dt><strong><%= model_class.human_attribute_name(:songfile.url) %>:</strong></dt>
+    10:   <dd><%= @song.songfile.url %></dd>
+    11:   <dt><strong><%= model_class.human_attribute_name(:songfile_content_type) %>:</strong></dt>
+    12:   <dd><%= @song.songfile_content_type %></dd>
+  app/views/songs/show.html.erb:9:in `_app_views_songs_show_html_erb___2370765269131739608_70277980334180'
+  app/controllers/songs_controller.rb:18:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.7ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:03:21 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSong Load (1.7ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1[0m
+  Rendered songs/show.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `songfile_url' for #<Song:0x007fd5be5ed738>):
+    7:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_name) %>:</strong></dt>
+    8:   <dd><%= @song.songfile_file_name %></dd>
+    9:   <dt><strong>URL:</strong></dt>
+    10:   <dd><%= @song.songfile_url %></dd>
+    11:   <dt><strong><%= model_class.human_attribute_name(:songfile_content_type) %>:</strong></dt>
+    12:   <dd><%= @song.songfile_content_type %></dd>
+    13:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_size) %>:</strong></dt>
+  app/views/songs/show.html.erb:10:in `_app_views_songs_show_html_erb___2370765269131739608_70277999318760'
+  app/controllers/songs_controller.rb:18:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.0ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:03:43 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  Rendered songs/show.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `songfile_path' for #<Song:0x007fd5bf6fc8f8>):
+    7:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_name) %>:</strong></dt>
+    8:   <dd><%= @song.songfile_file_name %></dd>
+    9:   <dt><strong>URL:</strong></dt>
+    10:   <dd><%= @song.songfile_path %></dd>
+    11:   <dt><strong><%= model_class.human_attribute_name(:songfile_content_type) %>:</strong></dt>
+    12:   <dd><%= @song.songfile_content_type %></dd>
+    13:   <dt><strong><%= model_class.human_attribute_name(:songfile_file_size) %>:</strong></dt>
+  app/views/songs/show.html.erb:10:in `_app_views_songs_show_html_erb___2370765269131739608_70278004896980'
+  app/controllers/songs_controller.rb:18:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.4ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2012-12-11 21:03:48 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1[0m
+  Rendered songs/show.html.erb within layouts/application (7.2ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2012-12-11 21:07:01 -0500
+
+SyntaxError (/Users/ezraball/Dropbox/advent/app/models/picture.rb:6: syntax error, unexpected tLAMBDA, expecting keyword_end
+  scope :unassigned -> {where(" id not in (select p...
+                      ^):
+  app/controllers/pictures_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2012-12-11 21:07:25 -0500
+Processing by PicturesController#index as HTML
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT `pictures`.* FROM `pictures` [0m
+  Rendered pictures/index.html.erb within layouts/application (7.1ms)
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 65ms (Views: 46.0ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/pictures/5/edit" for 127.0.0.1 at 2012-12-11 21:07:34 -0500
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPicture Load (2.0ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  Rendered pictures/_form.html.erb (4.6ms)
+  Rendered pictures/edit.html.erb within layouts/application (6.2ms)
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 28ms (Views: 24.4ms | ActiveRecord: 2.2ms)
+
+
+Started PUT "/pictures/5" for 127.0.0.1 at 2012-12-11 21:07:39 -0500
+Processing by PicturesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5M+H7HD7gyGMK+9eKOG4azj4vx12spEvBM8qNC0Lpmg=", "picture"=>{"picturefile"=>#<ActionDispatch::Http::UploadedFile:0x007fd5bc431310 @original_filename="5.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[picturefile]\"; filename=\"5.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/RackMultipart20121211-29869-1urng2d>>}, "commit"=>"Update Picture", "id"=>"5"}
+  [1m[36mPicture Load (1.0ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+[AWS S3 200 0.447474 0 retries] head_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/original/officer_junior.jpg")  
+
+[AWS S3 200 0.091501 0 retries] head_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/full/officer_junior.jpg")  
+
+[AWS S3 200 0.088438 0 retries] head_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/medium/officer_junior.jpg")  
+
+[AWS S3 200 0.228718 0 retries] head_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/thumb/officer_junior.jpg")  
+
+[32mCommand[0m :: identify -format %wx%h '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]' -resize "600x600>" '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-1vrml8y'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]' -resize "300x300>" '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-dlbg9m'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]'
+[32mCommand[0m :: convert '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]' -resize "100x100>" '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-hcrxov'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg[0]'
+  [1m[36m (3.3ms)[0m  [1mUPDATE `pictures` SET `picturefile_file_name` = '5.jpg', `picturefile_file_size` = 381129, `picturefile_updated_at` = '2012-12-12 02:07:40', `width` = 1084, `height` = 844, `updated_at` = '2012-12-12 02:07:40' WHERE `pictures`.`id` = 5[0m
+[paperclip] Saving attachments.
+[paperclip] deleting /pictures/picturefiles/000/000/005/original/officer_junior.jpg
+[AWS S3 204 0.106211 0 retries] delete_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/original/officer_junior.jpg")  
+
+[paperclip] deleting /pictures/picturefiles/000/000/005/full/officer_junior.jpg
+[AWS S3 204 0.089643 0 retries] delete_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/full/officer_junior.jpg")  
+
+[paperclip] deleting /pictures/picturefiles/000/000/005/medium/officer_junior.jpg
+[AWS S3 204 0.089412 0 retries] delete_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/medium/officer_junior.jpg")  
+
+[paperclip] deleting /pictures/picturefiles/000/000/005/thumb/officer_junior.jpg
+[AWS S3 204 0.087141 0 retries] delete_object(:bucket_name=>"advent-dev",:key=>"pictures/picturefiles/000/000/005/thumb/officer_junior.jpg")  
+
+[paperclip] saving /pictures/picturefiles/000/000/005/original/5.jpg
+[AWS S3 200 1.062014 0 retries] put_object(:acl=>:public_read,:bucket_name=>"advent-dev",:content_type=>"image/jpeg",:data=>#<Paperclip::UploadedFileAdapter:0x007fd5bcfb53f8 @target=#<ActionDispatch::Http::UploadedFile:0x007fd5bc431310 @original_filename="5.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[picturefile]\"; filename=\"5.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/RackMultipart20121211-29869-1urng2d>>, @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t5.jpg>>,:key=>"pictures/picturefiles/000/000/005/original/5.jpg")  
+
+[paperclip] saving /pictures/picturefiles/000/000/005/full/5.jpg
+[32mCommand[0m :: file -b --mime '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-1vrml8y20121211-29869-v0je41'
+[AWS S3 200 0.314149 0 retries] put_object(:acl=>:public_read,:bucket_name=>"advent-dev",:content_type=>"image/jpeg",:data=>#<Paperclip::FileAdapter:0x007fd5bcc6e078 @target=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-1vrml8y>, @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-1vrml8y20121211-29869-v0je41>>,:key=>"pictures/picturefiles/000/000/005/full/5.jpg")  
+
+[paperclip] saving /pictures/picturefiles/000/000/005/medium/5.jpg
+[32mCommand[0m :: file -b --mime '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-dlbg9m20121211-29869-1jcut8d'
+[AWS S3 200 0.106721 0 retries] put_object(:acl=>:public_read,:bucket_name=>"advent-dev",:content_type=>"image/jpeg",:data=>#<Paperclip::FileAdapter:0x007fd5bf06a968 @target=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-dlbg9m>, @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-dlbg9m20121211-29869-1jcut8d>>,:key=>"pictures/picturefiles/000/000/005/medium/5.jpg")  
+
+[paperclip] saving /pictures/picturefiles/000/000/005/thumb/5.jpg
+[32mCommand[0m :: file -b --mime '/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-hcrxov20121211-29869-1xi560l'
+[AWS S3 200 0.121579 0 retries] put_object(:acl=>:public_read,:bucket_name=>"advent-dev",:content_type=>"image/jpeg",:data=>#<Paperclip::FileAdapter:0x007fd5bc4fc7b8 @target=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-hcrxov>, @tempfile=#<File:/var/folders/4l/gwsgy__d6h38mgt18kb5w5hm0000gn/T/520121211-29869-4sq9t520121211-29869-hcrxov20121211-29869-1xi560l>>,:key=>"pictures/picturefiles/000/000/005/thumb/5.jpg")  
+
+  [1m[35m (1.6ms)[0m  COMMIT
+Redirected to http://localhost:5000/pictures/5
+Completed 302 Found in 3354ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/pictures/5" for 127.0.0.1 at 2012-12-11 21:07:42 -0500
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPicture Load (0.7ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  Rendered pictures/show.html.erb within layouts/application (3.6ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-12-11 21:07:50 -0500
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.7ms)[0m  [1mSELECT `movies`.* FROM `movies` [0m
+  Rendered movies/index.html.erb within layouts/application (2.5ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 29ms (Views: 23.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2012-12-11 21:07:52 -0500
+Processing by MoviesController#new as HTML
+  Rendered movies/_form.html.erb (5.7ms)
+  Rendered movies/new.html.erb within layouts/application (7.2ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 32ms (Views: 26.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2012-12-11 21:08:09 -0500
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5M+H7HD7gyGMK+9eKOG4azj4vx12spEvBM8qNC0Lpmg=", "movie"=>{"name"=>"blaba", "width"=>"320", "embed_code"=>"<span>hi</span>"}, "commit"=>"Create Movie"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO `movies` (`created_at`, `embed_code`, `name`, `updated_at`, `width`) VALUES ('2012-12-12 02:08:09', '<span>hi</span>', 'blaba', '2012-12-12 02:08:09', 320)[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:5000/movies/1
+Completed 302 Found in 7ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2012-12-11 21:08:09 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  Rendered movies/show.html.erb within layouts/application (2.8ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 22ms (Views: 20.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2012-12-11 21:08:40 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  Rendered movies/show.html.erb within layouts/application (1.6ms)
+  [1m[35mCalendar Load (0.6ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/entries" for 127.0.0.1 at 2012-12-11 21:08:42 -0500
+Processing by EntriesController#index as HTML
+  [1m[36mEntry Load (0.9ms)[0m  [1mSELECT `entries`.* FROM `entries` ORDER BY day[0m
+  Rendered entries/index.html.erb within layouts/application (2.8ms)
+  [1m[35mCalendar Load (0.6ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 31ms (Views: 23.2ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/entries/new" for 127.0.0.1 at 2012-12-11 21:08:43 -0500
+Processing by EntriesController#new as HTML
+  [1m[36mCalendar Load (1.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` IS NULL LIMIT 1[0m
+  Rendered entries/_form.html.erb (28.0ms)
+  Rendered entries/new.html.erb within layouts/application (29.7ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= simple_form_for [@calendar, @entry], :html => { :class => 'form-horizontal' } do |f| %>
+    2:   <p>Calendar: <%= @calendar.name %></p>
+    3:   <%= f.input :calendar_id, :as => :hidden %>
+    4:   <%= f.input :day %>
+    5:   <%= f.association :song, :label => :label, :collection => Song.unassigned %>
+  app/views/entries/_form.html.erb:2:in `block in _app_views_entries__form_html_erb___4409335361169182436_70278006300640'
+  app/views/entries/_form.html.erb:1:in `_app_views_entries__form_html_erb___4409335361169182436_70278006300640'
+  app/views/entries/new.html.erb:6:in `_app_views_entries_new_html_erb___2862790534536802006_70277981203700'
+  app/controllers/entries_controller.rb:35:in `new'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.3ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2012-12-11 21:08:51 -0500
+Processing by CalendarsController#index as HTML
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+  Rendered calendars/index.html.erb within layouts/application (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-11 21:08:56 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/_form.html.erb (7.5ms)
+  [1m[36mEntry Load (1.8ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  Rendered calendars/edit.html.erb within layouts/application (14.0ms)
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/calendars/1/entries/new" for 127.0.0.1 at 2012-12-11 21:08:59 -0500
+Processing by EntriesController#new as HTML
+  Parameters: {"calendar_id"=>"1"}
+  [1m[36mCalendar Load (1.8ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mSong Load (4.5ms)[0m  SELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))
+  [1m[36mPicture Load (0.7ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )[0m
+  [1m[35mMovie Load (0.9ms)[0m  SELECT `movies`.* FROM `movies` WHERE ( id not in (select movie_id from entries))
+  Rendered entries/_form.html.erb (36.4ms)
+  Rendered entries/new.html.erb within layouts/application (37.2ms)
+  [1m[36mCalendar Load (0.2ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 94ms (Views: 81.5ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/calendars/1/entries/new" for 127.0.0.1 at 2012-12-11 21:09:58 -0500
+Processing by EntriesController#new as HTML
+  Parameters: {"calendar_id"=>"1"}
+  [1m[35mCalendar Load (0.8ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE ( id not in (select movie_id from entries))[0m
+  Rendered entries/_form.html.erb (7.8ms)
+  Rendered entries/new.html.erb within layouts/application (8.6ms)
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 48ms (Views: 44.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/calendars/1/entries/new" for 127.0.0.1 at 2012-12-11 21:10:20 -0500
+Processing by EntriesController#new as HTML
+  Parameters: {"calendar_id"=>"1"}
+  [1m[36mCalendar Load (1.8ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))
+  [1m[36mPicture Load (0.6ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )[0m
+  Rendered entries/_form.html.erb (7.6ms)
+  Rendered entries/new.html.erb within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `picturefile_name' for #<Picture:0x007fd5bdacf518>):
+    3:   <%= f.input :calendar_id, :as => :hidden %>
+    4:   <%= f.input :day %>
+    5:   <%= f.association :song, :label_method => :label, :collection => Song.unassigned %>
+    6:   <%= f.association :picture, :collection => Picture.unassigned, :label_method => :picturefile_name %>
+    7:   <%= f.association :movie, :collection => Movie.unassigned %>
+    8:   <div class="form-actions">
+    9:     <%= f.button :submit, :class => 'btn-primary' %>
+  app/views/entries/_form.html.erb:6:in `block in _app_views_entries__form_html_erb___4409335361169182436_70278006499180'
+  app/views/entries/_form.html.erb:1:in `_app_views_entries__form_html_erb___4409335361169182436_70278006499180'
+  app/views/entries/new.html.erb:6:in `_app_views_entries_new_html_erb___2862790534536802006_70277981203700'
+  app/controllers/entries_controller.rb:35:in `new'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.6ms)
+
+
+Started GET "/calendars/1/entries/new" for 127.0.0.1 at 2012-12-11 21:10:49 -0500
+Processing by EntriesController#new as HTML
+  Parameters: {"calendar_id"=>"1"}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE ( id not in (select movie_id from entries))[0m
+  Rendered entries/_form.html.erb (11.7ms)
+  Rendered entries/new.html.erb within layouts/application (12.5ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 86ms (Views: 82.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/calendars/1/entries" for 127.0.0.1 at 2012-12-11 21:11:01 -0500
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5M+H7HD7gyGMK+9eKOG4azj4vx12spEvBM8qNC0Lpmg=", "entry"=>{"calendar_id"=>"1", "day"=>"1", "song_id"=>"1", "picture_id"=>"5", "movie_id"=>"1"}, "commit"=>"Create Entry", "calendar_id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO `entries` (`calendar_id`, `created_at`, `day`, `movie_id`, `picture_id`, `song_id`, `updated_at`, `x`, `y`) VALUES (1, '2012-12-12 02:11:01', 1, 1, 5, 1, '2012-12-12 02:11:01', NULL, NULL)[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+Redirected to http://localhost:5000/calendars/1/edit
+Completed 302 Found in 9ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-11 21:11:01 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (5.6ms)
+  [1m[35mEntry Load (0.8ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/edit.html.erb within layouts/application (41.0ms)
+  [1m[35mCalendar Load (0.2ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 96ms (Views: 92.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/calendars/1/entries/new" for 127.0.0.1 at 2012-12-11 21:11:04 -0500
+Processing by EntriesController#new as HTML
+  Parameters: {"calendar_id"=>"1"}
+  [1m[36mCalendar Load (0.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mSong Load (0.4ms)[0m  SELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE ( id not in (select movie_id from entries))
+  Rendered entries/_form.html.erb (8.7ms)
+  Rendered entries/new.html.erb within layouts/application (10.0ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 1.6ms)

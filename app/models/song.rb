@@ -7,7 +7,7 @@ class Song < ActiveRecord::Base
     :bucket => 'advent-dev'
   
   has_many :entries
-  
+  scope :unassigned, -> {where( ' id not in (select song_id from entries)')}
   def label
     [artist,title].join('|')
   end

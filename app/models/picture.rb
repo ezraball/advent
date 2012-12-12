@@ -2,6 +2,8 @@ class Picture < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :picturefile
   before_save :set_dimensions
+  
+  scope :unassigned, -> {where(" id not in (select picture_id from entries) ")}
 
   has_many :entries
   has_many :songs, :through => :entries

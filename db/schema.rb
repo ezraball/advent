@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202151830) do
+ActiveRecord::Schema.define(:version => 20121202185751) do
 
   create_table "calendars", :force => true do |t|
     t.string   "name"
@@ -44,10 +44,27 @@ ActiveRecord::Schema.define(:version => 20121202151830) do
   add_index "entries", ["song_id"], :name => "index_entries_on_song_id"
 
   create_table "movies", :force => true do |t|
-    t.string   "youtube_url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.text     "embed_code"
+    t.string   "name"
+    t.integer  "width"
+  end
+
+  create_table "pairings", :force => true do |t|
+    t.integer  "calendar_id"
+    t.integer  "song_id"
+    t.integer  "picture_id"
+    t.integer  "movie_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "pairings", ["calendar_id", "song_id", "movie_id", "picture_id"], :name => "pairings_everything_idx"
+  add_index "pairings", ["calendar_id"], :name => "index_pairings_on_calendar_id"
+  add_index "pairings", ["movie_id"], :name => "index_pairings_on_movie_id"
+  add_index "pairings", ["picture_id"], :name => "index_pairings_on_picture_id"
+  add_index "pairings", ["song_id"], :name => "index_pairings_on_song_id"
 
   create_table "pictures", :force => true do |t|
     t.datetime "created_at",               :null => false
