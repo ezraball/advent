@@ -15452,3 +15452,1146 @@ Processing by EntriesController#new as HTML
   Rendered entries/new.html.erb within layouts/application (10.0ms)
   [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
 Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 1.6ms)
+Connecting to database specified by database.yml
+  [1m[36m (30.6ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (17.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (3.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCalendars (20121121014254)
+  [1m[35m (12.3ms)[0m  CREATE TABLE `calendars` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `pub_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121121014254')[0m
+Migrating to CreateSongs (20121124140106)
+  [1m[35m (8.5ms)[0m  CREATE TABLE `songs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121124140106')[0m
+Migrating to AddAttachmentSongfileToSongs (20121124140149)
+  [1m[35m (11.6ms)[0m  ALTER TABLE `songs` ADD `songfile_file_name` varchar(255)
+  [1m[36m (11.4ms)[0m  [1mALTER TABLE `songs` ADD `songfile_content_type` varchar(255)[0m
+  [1m[35m (11.7ms)[0m  ALTER TABLE `songs` ADD `songfile_file_size` int(11)
+  [1m[36m (11.4ms)[0m  [1mALTER TABLE `songs` ADD `songfile_updated_at` datetime[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121124140149')
+Migrating to CreateMovies (20121124140243)
+  [1m[36m (11.8ms)[0m  [1mCREATE TABLE `movies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `youtube_url` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121124140243')
+Migrating to CreatePictures (20121124140253)
+  [1m[36m (8.8ms)[0m  [1mCREATE TABLE `pictures` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121124140253')
+Migrating to AddAttachmentPicturefileToPictures (20121124140315)
+  [1m[36m (7.4ms)[0m  [1mALTER TABLE `pictures` ADD `picturefile_file_name` varchar(255)[0m
+  [1m[35m (11.1ms)[0m  ALTER TABLE `pictures` ADD `picturefile_content_type` varchar(255)
+  [1m[36m (13.1ms)[0m  [1mALTER TABLE `pictures` ADD `picturefile_file_size` int(11)[0m
+  [1m[35m (10.5ms)[0m  ALTER TABLE `pictures` ADD `picturefile_updated_at` datetime
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121124140315')[0m
+Migrating to CreateEntries (20121125020653)
+  [1m[35m (12.7ms)[0m  CREATE TABLE `entries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `calendar_id` int(11), `song_id` int(11), `picture_id` int(11), `movie_id` int(11), `unlock_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (12.2ms)[0m  [1mCREATE INDEX `index_entries_on_calendar_id` ON `entries` (`calendar_id`)[0m
+  [1m[35m (18.6ms)[0m  CREATE INDEX `index_entries_on_song_id` ON `entries` (`song_id`)
+  [1m[36m (17.3ms)[0m  [1mCREATE INDEX `index_entries_on_picture_id` ON `entries` (`picture_id`)[0m
+  [1m[35m (19.8ms)[0m  CREATE INDEX `index_entries_on_movie_id` ON `entries` (`movie_id`)
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121125020653')[0m
+Migrating to AddAttachmentBackgroundToCalendars (20121125170039)
+  [1m[35m (14.6ms)[0m  ALTER TABLE `calendars` ADD `background_file_name` varchar(255)
+  [1m[36m (9.5ms)[0m  [1mALTER TABLE `calendars` ADD `background_content_type` varchar(255)[0m
+  [1m[35m (10.9ms)[0m  ALTER TABLE `calendars` ADD `background_file_size` int(11)
+  [1m[36m (19.1ms)[0m  [1mALTER TABLE `calendars` ADD `background_updated_at` datetime[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121125170039')
+Migrating to AddxyToEntry (20121129020629)
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121129020629')[0m
+Migrating to RemoveUnlockDateFromEntry (20121129020821)
+  [1m[35m (11.1ms)[0m  ALTER TABLE `entries` DROP `unlock_date`
+  [1m[36m (11.4ms)[0m  [1mALTER TABLE `entries` ADD `day` int(11)[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121129020821')
+Migrating to AddxyToEntries (20121129023856)
+  [1m[36m (11.4ms)[0m  [1mALTER TABLE `entries` ADD `x` int(11)[0m
+  [1m[35m (14.1ms)[0m  ALTER TABLE `entries` ADD `y` int(11)
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121129023856')[0m
+Migrating to AddStuffToCalendar (20121130220641)
+  [1m[35m (13.7ms)[0m  ALTER TABLE `calendars` ADD `end_date` date
+  [1m[36m (11.7ms)[0m  [1mALTER TABLE `calendars` ADD `days_to_count_down` int(11)[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121130220641')
+Migrating to AddInfoToSong (20121201011718)
+  [1m[36m (10.1ms)[0m  [1mALTER TABLE `songs` ADD `artist` varchar(255)[0m
+  [1m[35m (14.2ms)[0m  ALTER TABLE `songs` ADD `title` varchar(255)
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121201011718')[0m
+Migrating to AddWidthHeightToPicture (20121202151830)
+  [1m[35m (16.6ms)[0m  ALTER TABLE `pictures` ADD `width` int(11)
+  [1m[36m (9.6ms)[0m  [1mALTER TABLE `pictures` ADD `height` int(11)[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20121202151830')
+Migrating to AddEmbedCodeToMovies (20121202185751)
+  [1m[36m (9.9ms)[0m  [1mALTER TABLE `movies` DROP `youtube_url`[0m
+  [1m[35m (15.2ms)[0m  ALTER TABLE `movies` ADD `embed_code` text
+  [1m[36m (18.9ms)[0m  [1mALTER TABLE `movies` ADD `name` varchar(255)[0m
+  [1m[35m (7.7ms)[0m  ALTER TABLE `movies` ADD `width` int(11)
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20121202185751')[0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-23 09:33:53 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (1.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 19ms
+
+ActiveRecord::RecordNotFound (Couldn't find Calendar with id=1):
+  app/controllers/calendars_controller.rb:17:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p327/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p327/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p327/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-23 16:23:30 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (0.9ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (1.6ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (135.1ms)
+Compiled bootstrap-datepicker.css  (0ms)  (pid 19797)
+Compiled application.css  (13ms)  (pid 19797)
+Compiled jquery.js  (8ms)  (pid 19797)
+Compiled jquery_ujs.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-alert.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-tab.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap/bootstrap-affix.js  (1ms)  (pid 19797)
+Compiled twitter/bootstrap.js  (337ms)  (pid 19797)
+Compiled bootstrap-datepicker/core.js  (1ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.bg.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.br.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.cs.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.da.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.de.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.es.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.fi.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.fr.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.id.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.is.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.it.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ja.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.kr.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.lt.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.lv.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ms.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.nb.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.nl.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pl.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.pt.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.ru.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.sl.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.sv.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.th.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.tr.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.js  (0ms)  (pid 19797)
+Compiled bootstrap-datepicker/index.js  (568ms)  (pid 19797)
+Compiled jquery-ui.js  (5ms)  (pid 19797)
+Compiled application.js  (1074ms)  (pid 19797)
+Completed 200 OK in 1529ms (Views: 1485.0ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-23 19:53:16 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (40.8ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (6.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (113.1ms)
+Completed 200 OK in 340ms (Views: 249.5ms | ActiveRecord: 47.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-23 20:16:34 -0500
+Connecting to database specified by database.yml
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (0.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (134.4ms)
+Completed 200 OK in 502ms (Views: 416.7ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/radio" for 127.0.0.1 at 2012-12-23 20:16:42 -0500
+
+ActionController::RoutingError (No route matches [GET] "/radio"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p327/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p327/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p327/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p327/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/calendars/1/radio" for 127.0.0.1 at 2012-12-23 20:16:49 -0500
+Processing by CalendarsController#radio as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/radio.html.erb within layouts/application (0.7ms)
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 44ms (Views: 41.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/calendars/1/" for 127.0.0.1 at 2012-12-23 20:16:55 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.5ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (24.3ms)
+Completed 200 OK in 66ms (Views: 63.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2012-12-23 20:16:58 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (15.1ms)
+  [1m[35mEntry Load (1.7ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mPicture Load (1.0ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 1 LIMIT 1[0m
+  [1m[35mSong Load (1.8ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 2 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 2 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 2 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 3 LIMIT 1[0m
+  [1m[35mSong Load (0.4ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 3 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 3 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 4 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 4 LIMIT 1[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 4 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 5 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 5 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 6 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 6 LIMIT 1[0m
+  [1m[35mMovie Load (2.4ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 6 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 7 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 7 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 7 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 8 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 8 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 8 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 9 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 9 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 9 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 10 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 10 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 11 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 11 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 11 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 10 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 12 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 12 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 12 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 13 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 13 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 13 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 14 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 14 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 14 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 15 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 15 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 15 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 16 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 16 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 16 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 17 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 17 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 17 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 18 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 18 LIMIT 1[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 18 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 19 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 19 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 19 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 20 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 20 LIMIT 1[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 20 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 21 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 21 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 21 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 22 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 22 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 22 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 23 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 23 LIMIT 1
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 24 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 24 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 24 LIMIT 1[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 23 LIMIT 1
+  Rendered calendars/edit.html.erb within layouts/application (409.0ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 493ms (Views: 450.2ms | ActiveRecord: 40.8ms)
+
+
+Started GET "/calendars/1/entries/1/edit" for 127.0.0.1 at 2012-12-23 20:17:04 -0500
+Processing by EntriesController#edit as HTML
+  Parameters: {"calendar_id"=>"1", "id"=>"1"}
+  [1m[35mCalendar Load (0.5ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`id` = 1 ORDER BY day LIMIT 1[0m
+  [1m[35mSong Load (1.9ms)[0m  SELECT `songs`.* FROM `songs` WHERE ( id not in (select song_id from entries))
+  [1m[36mPicture Load (0.9ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE ( id not in (select picture_id from entries) )[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT `movies`.* FROM `movies` WHERE ( id not in (select movie_id from entries))
+  Rendered entries/_form.html.erb (79.9ms)
+  Rendered entries/edit.html.erb within layouts/application (83.5ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 129ms (Views: 117.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:37:10 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (37.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (9.2ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (78.4ms)
+Completed 200 OK in 306ms (Views: 211.3ms | ActiveRecord: 46.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:37:13 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (3.5ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (1.9ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (27.4ms)
+Completed 200 OK in 73ms (Views: 66.0ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:37:20 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.8ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.5ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.7ms)
+Completed 200 OK in 66ms (Views: 62.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:37:28 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (1.5ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (29.7ms)
+Completed 200 OK in 70ms (Views: 66.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:38:39 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (24.2ms)
+Compiled radio.js  (0ms)  (pid 30251)
+Compiled application.js  (36ms)  (pid 30251)
+Completed 200 OK in 397ms (Views: 394.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:45:32 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.2ms)
+Compiled radio.js  (0ms)  (pid 30251)
+Compiled application.js  (39ms)  (pid 30251)
+Completed 200 OK in 379ms (Views: 376.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:46:09 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (2.1ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.3ms)
+Compiled radio.js  (0ms)  (pid 30251)
+Compiled application.js  (96ms)  (pid 30251)
+Completed 200 OK in 332ms (Views: 327.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:46:14 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (2.2ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (24.5ms)
+Completed 200 OK in 66ms (Views: 62.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:46:39 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (79.8ms)
+Compiled radio.js  (0ms)  (pid 30251)
+Compiled application.js  (33ms)  (pid 30251)
+Completed 200 OK in 361ms (Views: 358.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:47:26 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.5ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.6ms)
+Completed 200 OK in 65ms (Views: 62.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:47:35 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (1.5ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.7ms)
+Completed 200 OK in 64ms (Views: 60.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:48:05 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (2.3ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (34.4ms)
+Completed 200 OK in 74ms (Views: 70.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-12-24 09:49:15 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (25.6ms)
+Completed 200 OK in 79ms (Views: 76.8ms | ActiveRecord: 0.8ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-24 11:10:38 -0500
+Connecting to database specified by database.yml
+
+Mysql2::Error (Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)):
+  mysql2 (0.3.11) lib/mysql2/client.rb:44:in `connect'
+  mysql2 (0.3.11) lib/mysql2/client.rb:44:in `initialize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `new'
+  activerecord (3.2.8) lib/active_record/connection_adapters/mysql2_adapter.rb:16:in `mysql2_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:309:in `new_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:319:in `checkout_new_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:241:in `block (2 levels) in checkout'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:236:in `loop'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:236:in `block in checkout'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:233:in `checkout'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:96:in `block in connection'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:95:in `connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:404:in `retrieve_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_specification.rb:170:in `retrieve_connection'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_specification.rb:144:in `connection'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:67:in `rescue in call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:61:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__798241831004055295__call__1078893592232720541__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-24 11:11:00 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (1.5ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (102.2ms)
+Compiled application.css  (5ms)  (pid 39015)
+Compiled application.js  (184ms)  (pid 39015)
+Completed 200 OK in 571ms (Views: 529.5ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/packages" for 127.0.0.1 at 2013-11-24 11:14:58 -0500
+
+ActionController::RoutingError (No route matches [GET] "/packages"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /Users/ezraball/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-24 11:15:01 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>1}
+  [1m[36mCalendar Load (6.4ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mEntry Load (0.6ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  Rendered calendars/show.html.erb within layouts/showcalendar (37.7ms)
+Completed 200 OK in 151ms (Views: 142.1ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/calendars/2" for 127.0.0.1 at 2013-11-24 11:15:10 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCalendar Load (0.8ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 2 LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Calendar with id=2):
+  app/controllers/calendars_controller.rb:17:in `show'
+
+
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/ezraball/.rvm/gems/ruby-1.9.3-p194@advent/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/calendars/1" for 127.0.0.1 at 2013-11-24 11:15:12 -0500
+Processing by CalendarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mEntry Load (4.8ms)[0m  [1mSELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/show.html.erb within layouts/showcalendar (32.2ms)
+Completed 200 OK in 141ms (Views: 133.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/calendars/" for 127.0.0.1 at 2013-11-24 11:15:16 -0500
+Processing by CalendarsController#index as HTML
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT `calendars`.* FROM `calendars` 
+  Rendered calendars/index.html.erb within layouts/application (18.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 78ms (Views: 75.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/calendars/new" for 127.0.0.1 at 2013-11-24 11:19:59 -0500
+Processing by CalendarsController#new as HTML
+  Rendered calendars/_form.html.erb (16.1ms)
+  Rendered calendars/new.html.erb within layouts/application (23.9ms)
+  [1m[35mCalendar Load (0.3ms)[0m  SELECT `calendars`.* FROM `calendars` 
+Completed 200 OK in 73ms (Views: 71.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/calendars/1/edit" for 127.0.0.1 at 2013-11-24 11:22:07 -0500
+Processing by CalendarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCalendar Load (0.6ms)[0m  [1mSELECT `calendars`.* FROM `calendars` WHERE `calendars`.`id` = 1 LIMIT 1[0m
+  Rendered calendars/_form.html.erb (24.3ms)
+  [1m[35mEntry Load (0.6ms)[0m  SELECT `entries`.* FROM `entries` WHERE `entries`.`calendar_id` = 1 ORDER BY day
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 1 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 1 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 1 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 2 LIMIT 1
+  [1m[36mSong Load (4.8ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 2 LIMIT 1[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 2 LIMIT 1
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 3 LIMIT 1[0m
+  [1m[35mSong Load (0.5ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 3 LIMIT 1
+  [1m[36mMovie Load (5.6ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 3 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 4 LIMIT 1
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 4 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 4 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 5 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 5 LIMIT 1
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 5 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 6 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 6 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 6 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 7 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 7 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 7 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 8 LIMIT 1
+  [1m[36mSong Load (0.5ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 8 LIMIT 1[0m
+  [1m[35mMovie Load (1.8ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 8 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 9 LIMIT 1[0m
+  [1m[35mSong Load (0.4ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 9 LIMIT 1
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 9 LIMIT 1[0m
+  [1m[35mPicture Load (6.6ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 10 LIMIT 1
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 10 LIMIT 1[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 11 LIMIT 1
+  [1m[36mPicture Load (1.2ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 11 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 11 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 10 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 12 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 12 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 12 LIMIT 1
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 13 LIMIT 1[0m
+  [1m[35mSong Load (0.5ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 13 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 13 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 14 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 14 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 14 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 15 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 15 LIMIT 1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 15 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 16 LIMIT 1
+  [1m[36mSong Load (0.7ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 16 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 16 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 17 LIMIT 1[0m
+  [1m[35mSong Load (0.4ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 17 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 17 LIMIT 1[0m
+  [1m[35mPicture Load (0.8ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 18 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 18 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 18 LIMIT 1
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 19 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 19 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 19 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 20 LIMIT 1
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 20 LIMIT 1[0m
+  [1m[35mMovie Load (4.5ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 20 LIMIT 1
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 21 LIMIT 1[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 21 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 21 LIMIT 1[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 22 LIMIT 1
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 22 LIMIT 1[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 22 LIMIT 1
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 23 LIMIT 1[0m
+  [1m[35mSong Load (4.4ms)[0m  SELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 23 LIMIT 1
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 24 LIMIT 1[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT `pictures`.* FROM `pictures` WHERE `pictures`.`id` = 24 LIMIT 1
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT `songs`.* FROM `songs` WHERE `songs`.`id` = 24 LIMIT 1[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT `movies`.* FROM `movies` WHERE `movies`.`id` = 23 LIMIT 1
+  Rendered calendars/edit.html.erb within layouts/application (697.8ms)
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT `calendars`.* FROM `calendars` [0m
+Completed 200 OK in 758ms (Views: 681.8ms | ActiveRecord: 73.4ms)

@@ -1,0 +1,20 @@
+Tue, 12 Nov 2013 21:44:54 -0500
+doc/README_FOR_APP	Tue, 20 Nov 2012 20:09:06 -0500
+app/controllers/application_controller.rb	Tue, 20 Nov 2012 20:09:03 -0500
+app/controllers/calendars_controller.rb	Sun, 23 Dec 2012 20:14:10 -0500
+app/controllers/entries_controller.rb	Sun, 02 Dec 2012 16:11:02 -0500
+app/controllers/movies_controller.rb	Sat, 24 Nov 2012 09:02:43 -0500
+app/controllers/pictures_controller.rb	Sat, 24 Nov 2012 09:02:53 -0500
+app/controllers/songs_controller.rb	Sat, 24 Nov 2012 09:01:06 -0500
+app/helpers/application_helper.rb	Tue, 20 Nov 2012 20:09:03 -0500
+app/helpers/bootstrap_flash_helper.rb	Sat, 01 Dec 2012 21:15:41 -0500
+app/helpers/calendars_helper.rb	Tue, 20 Nov 2012 20:42:58 -0500
+app/helpers/entries_helper.rb	Sun, 02 Dec 2012 16:12:46 -0500
+app/helpers/movies_helper.rb	Sat, 24 Nov 2012 09:02:43 -0500
+app/helpers/pictures_helper.rb	Sat, 24 Nov 2012 09:02:53 -0500
+app/helpers/songs_helper.rb	Sat, 24 Nov 2012 09:01:06 -0500
+app/models/calendar.rb	Fri, 30 Nov 2012 17:12:36 -0500
+app/models/entry.rb	Wed, 05 Dec 2012 01:42:10 -0500
+app/models/movie.rb	Tue, 11 Dec 2012 21:07:21 -0500
+app/models/picture.rb	Tue, 11 Dec 2012 21:07:17 -0500
+app/models/song.rb	Tue, 11 Dec 2012 21:01:14 -0500

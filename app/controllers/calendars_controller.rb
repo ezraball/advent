@@ -80,6 +80,11 @@ class CalendarsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def radio
+    @calendar = Calendar.find(params[:id])
+    
+  end
 
   private
   def resolve_layout

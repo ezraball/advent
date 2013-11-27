@@ -17,27 +17,6 @@
 
   </head>
   <body>
-<%#
-    <div class="navbar navbar-fluid-top"  id="calnav">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Advent</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  ></li>
-              <li><%= link_to "Link2", "/path2"  ></li>
-              <li><%= link_to "Link3", "/path3"  ></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
- %>
 
     <div class="container-fluid" id="cal" style="background: #c92221 url('<%= @calendar.background.url.html_safe if @calendar.background %>') no-repeat left top;">
       <div class="row-fluid">
@@ -71,7 +50,6 @@
 			<p>This year, each day on the advent calendar has <em>two</em> goodies.</p> 
 			<p>Just click on one of the two large round knobs on the TV to select one of two channels, pick your day, and enjoy! </p>
 		</div>
-		<%= link_to "Advent Radio", '#', {:class => 'btn', :id => 'pop-up-radio'} %>
 		
 	
         </div><!--/span-->

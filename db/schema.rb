@@ -51,21 +51,6 @@ ActiveRecord::Schema.define(:version => 20121202185751) do
     t.integer  "width"
   end
 
-  create_table "pairings", :force => true do |t|
-    t.integer  "calendar_id"
-    t.integer  "song_id"
-    t.integer  "picture_id"
-    t.integer  "movie_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "pairings", ["calendar_id", "song_id", "movie_id", "picture_id"], :name => "pairings_everything_idx"
-  add_index "pairings", ["calendar_id"], :name => "index_pairings_on_calendar_id"
-  add_index "pairings", ["movie_id"], :name => "index_pairings_on_movie_id"
-  add_index "pairings", ["picture_id"], :name => "index_pairings_on_picture_id"
-  add_index "pairings", ["song_id"], :name => "index_pairings_on_song_id"
-
   create_table "pictures", :force => true do |t|
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false

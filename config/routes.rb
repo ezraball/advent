@@ -12,6 +12,9 @@ Advent::Application.routes.draw do
   resources :songs
 
   resources :calendars do 
+    member do 
+      get 'radio'
+    end
     resources :entries
   end
 
