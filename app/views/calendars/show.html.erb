@@ -1,31 +1,33 @@
-<% @calendar.entries.each do |entry| %>
-	<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
-		<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#myModal", {:class => 'etrig', :calendar_id => @calendar.id, :entry_id => entry.id, :entry_day => entry.day, :channel_id => 1} %>
+<div id="mainarea">
+	<% @calendar.entries.each do |entry| %>
+		<div class="numlink" style="top:<%= entry.y %>px; left:<%= entry.x %>px;z-index:0;" data-eid="<%= entry.id %>">
+			<%= link_to_if entry.unlocked?(params[:debug]), entry.day, "#myModal", {:class => 'etrig', :calendar_id => @calendar.id, :entry_id => entry.id, :entry_day => entry.day, :channel_id => 1} %>
+		</div>
+	<% end %>
+
+	<div class="channelchange">
+		&nbsp;
 	</div>
-<% end %>
 
-<div class="channelchange">
-	&nbsp;
-</div>
+	<div id="myModal" class="modal hide fade">
+	    <button type="button" class="close closebutton" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+	    <p class="movebutton" style="text-align:center;"><i class="icon-move" style="float:left;"></i>
+			&nbsp;<span class="modalhead">Channel</span> <span id="modalchannel" class="modallabel"></span>&nbsp;&nbsp;&nbsp;&nbsp; <span class="modalhead" class="modallabel">December</span> <span id="modalday"></span>
+		</p>
+	  <div class="modal-body" style="overflow-y:visible;">
+	  </div>
+	</div>
 
-<div id="myModal" class="modal hide fade">
-    <button type="button" class="close closebutton" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
-    <p class="movebutton" style="text-align:center;"><i class="icon-move" style="float:left;"></i>
-		&nbsp;<span class="modalhead">Channel</span> <span id="modalchannel" class="modallabel"></span>&nbsp;&nbsp;&nbsp;&nbsp; <span class="modalhead" class="modallabel">December</span> <span id="modalday"></span>
-	</p>
-  <div class="modal-body" style="overflow-y:visible;">
-  </div>
-</div>
-
-<div id="radioModal" class="modal hide fade">
-    <button type="button" class="close closebutton" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
-    <p class="movebutton" style="text-align:center;"><i class="icon-move" style="float:left;"></i>
-	Advent Radio
-	<div class="modal-body" style="overflow-y:visible;">
-		aloha
+	<div id="radioModal" class="modal hide fade">
+	    <button type="button" class="close closebutton" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+	    <p class="movebutton" style="text-align:center;"><i class="icon-move" style="float:left;"></i>
+		Advent Radio
+		<div class="modal-body" style="overflow-y:visible;">
+			aloha
 	
+		</div>
+
 	</div>
 
+
 </div>
-
-

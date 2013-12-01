@@ -1,0 +1,133 @@
+diff --git a/app/assets/stylesheets/bootstrap_and_overrides.css.less b/app/assets/stylesheets/bootstrap_and_overrides.css.less
+index d797a95..6c7ca05 100644
+--- a/app/assets/stylesheets/bootstrap_and_overrides.css.less
++++ b/app/assets/stylesheets/bootstrap_and_overrides.css.less
+@@ -34,127 +34,3 @@
+ #calnav {
+ 	margin-bottom:0px;
+ }
+-#cal {
+-	height:635px;
+-	
+-}
+-body {
+-	font-family: 'Oranienbaum', serif;
+-	background-color: #c92221;
+-}
+-#audioinfo, #instructions {
+-	border: 1px solid #666;
+-}
+-#instructions {
+-	margin-top:150px;
+-	line-height:auto;
+-	padding:15px;
+-}
+-h1, h2, h3, .num, #channelinfo, .movebutton {
+-	font-family: Spinnaker;
+-	text-transform: uppercase;
+-}
+-.modalhead {
+-	color:@lightGreen;
+-}
+-.modallabel {
+-	font-weight:bold;
+-}
+-#logo, #logo h3, #logo h2 {
+-	text-align:center;
+-	line-height:none;
+-	text-transform: none;
+-}
+-#logo, #logo h3 {
+-	font-family: 'Clicker Script', cursive;
+-	color:#FFF;
+-}
+-#logo h2 {
+-	font-family: 'Oranienbaum';
+-	font-size:5em;
+-	color:@lightGreen;
+-//	font-weight: normal;
+-}
+-
+-#instructions h3 {
+-//	font-size:0.8em;
+-	font-size:1.1em;
+-	line-height:1.2em;
+-	margin-bottom:10px;
+-	color:@lightGreen;	
+-}
+-#instructions h2 {
+-	font-family: 'Clicker Script',cursive;
+-	color:@lightGreen;	
+-	font-size:1.1em;
+-	font-weight:normal;
+-	line-height:1em;
+-	margin-bottom:5px;
+-}
+-.alpha60, #audioinfo {
+-/* Fallback for web browsers that don't support RGBa */
+-background-color: rgb(255,255,255);
+-/* RGBa with 0.6 opacity */
+-background-color: rgba(255,255,255, 0.2);
+-/* For IE 5.5 - 7*/
+-/* For IE 8*/
+--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+-}
+-
+-.numlink {
+-	position:absolute; 
+-	height:18px;
+-	width:18px;
+-	text-align:center;
+-	background: url(/images/number_background.png);
+-	font-weight:bold;
+-	font-family: 'Spinnaker','Helvetica','Arial',sans-serif;
+-	font-size:.9em;
+-}
+-.numlink > a {
+-	color:red;
+-	font-weight:bold;
+-	font-family: 'Spinnaker','Helvetica','Arial',sans-serif;
+-	font-size:.9em;
+-}
+-#channelinfo {
+-	border-top: 1px solid #666;
+-	padding:20px;
+-	text-align:center;
+-	color: @lightGreen;
+-}
+-#currchan {
+-	font-family: 'Oranienbaum',serif;
+-	font-weight: bold;
+-	color: #fff;
+-}
+-.channelchange {
+-	position:absolute;
+-	left: 470px;
+-	top: 335px;
+-	width:170px;
+-	height:2em;
+-}
+-div:hover.channelchange {
+-	cursor:pointer;
+-}
+-.modal {
+-  &.fade {
+-    .transition(e('opacity .3s linear'));
+-    top: 50%;
+-  }
+-  &.fade.in { top: 50%; }
+-}
+-.modal-body {
+-	overflow-y:0;
+-	max-height:none;
+-}
+-#myModal a {
+-	color: @lightGreen;
+-}
+-#myModal {
+-	background-color: #c92221;
+-}
+-.movebutton, .closebutton {
+-	margin:5px 15px;
+-}
+\ No newline at end of file

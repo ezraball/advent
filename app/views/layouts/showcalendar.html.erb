@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Advent" %></title>
-	<link href='http://fonts.googleapis.com/css?family=Clicker+Script|Spinnaker|Oranienbaum' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Clicker+Script|Spinnaker|Oranienbaum|Chivo' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -13,8 +13,14 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag "application", :media => "all" %>
-
+	    <%= stylesheet_link_tag "application", :media => "all" %>
+	    <%= stylesheet_link_tag "/stylesheets/#{@calendar.pub_date.year}.css", :media => "all" %>
+  <style>
+  #cal {
+  	height:635px;
+  	background: url('<%= @calendar.background.url.html_safe if @calendar.background %>') no-repeat left top;	
+  }
+  </style>
   </head>
   <body>
 <%#
@@ -39,7 +45,7 @@
     </div>
  %>
 
-    <div class="container-fluid" id="cal" style="background: #c92221 url('<%= @calendar.background.url.html_safe if @calendar.background %>') no-repeat left top;">
+    <div class="container-fluid" id="cal">
       <div class="row-fluid">
 	    <div class="span9">
           <%= bootstrap_flash %>
@@ -48,16 +54,11 @@
         <div class="span3">
 		
 		<div id="logo">
-			<h3>Terri &amp; Ezra's</h3>
-			<h2>2012</h2>
+			<h3 class="logofirst">Terri, Ezra, &amp; Rainer's</h3>
+			<h2><%= @calendar.pub_date.year %></h2>
 			<h3>Advent Calendar</h3>
 		</div>
 		
-		<div id="channelinfo">
-			<p>Current channel: <span id="currchan">1</span></p>
-		</div>
-
-
 
 <% if params[:debug] %>		
 	<%= link_to "endragify", '#', {:id => 'endragify', :class => 'btn btn-small'} %>
@@ -65,13 +66,8 @@
 		
 	</div>
 <% end %>
-		
-		<div id="instructions" class="alpha60">
-			<h3>Now, with double the Christmas!</h3>
-			<p>This year, each day on the advent calendar has <em>two</em> goodies.</p> 
-			<p>Just click on one of the two large round knobs on the TV to select one of two channels, pick your day, and enjoy! </p>
-		</div>
-		<%= link_to "Advent Radio", '#', {:class => 'btn', :id => 'pop-up-radio'} %>
+		<%= render :partial => "calendars/nav#{@calendar.pub_date.year}" rescue nil %>
+		<%# link_to "Advent Radio", '#', {:class => 'btn', :id => 'pop-up-radio'} %>
 		
 	
         </div><!--/span-->
